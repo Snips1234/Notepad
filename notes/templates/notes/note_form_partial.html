@@ -1,0 +1,33 @@
+<form
+  id="noteForm"
+  method="post"
+  action="{% if note %}{% url 'edit_note' note.id %}{% else %}{% url 'add_note' %}{% endif %}"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+  <div class="modal-header">
+    <h5 class="modal-title">{{ action }} Note</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+  </div>
+
+  <div class="modal-body">
+    {{ form.as_p }}
+    <input type="file" name="note_images" multiple />
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-success d-flex align-items-center justify-content-center"
+    >
+      <i class="bi bi-floppy"></i>
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary d-flex align-items-center justify-content-center"
+      data-bs-dismiss="modal"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ action }} Note</title>
+    <link rel="stylesheet" href="{% static 'notes/css/bootstrap.min.css' %}" />
+    <script src="{% static 'notes/js/bootstrap.bundle.min.js' %}"></script>
+  </head>
+  <body class="p-4">
+    <div class="container">
+      <h2>{{ action }} Notes</h2>
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-success">{{ action }}</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </body>
+</html>
